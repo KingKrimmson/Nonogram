@@ -65,7 +65,7 @@
                         <configuration>
                             <mainClass>com.kingkrimmson.Nurikabe</mainClass>
                             <arguments>
-                                <argument>${Nurikabe.path}\Puzzles\basic_test_1.txt</argument>
+                                <argument>${Nurikabe.path}</argument>
                             </arguments>
                         </configuration>
                     </execution>
