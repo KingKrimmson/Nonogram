@@ -110,44 +110,111 @@ public class Nurikabe {
     }
 
     public boolean isSolved() {
+        // For each row
         for (int h = 0; h < height; h++) {
-            ArrayList<Integer> line = new ArrayList<Integer>();
+            ArrayList<String> line = new ArrayList<String>();
             int curr = 0;
+            // For each cell
             for (int w = 0; w < width; w++ ){
+                // If the cell is filled
                 if (board.get(h).get(w)) {
+                    // Increment the count
                     curr +=1;
-                } else {
-                    if (curr > 0 || w == width - 1) {
-                        line.add(curr);
+                    // If it's the last cell, log
+                    if (w == width - 1) {
+                        line.add(String.valueOf(curr));
+                    }
+                } else { // If the cell is not filled
+                    // And curr is set OR it's the last cell with an empty row
+                    if (curr > 0 || (w == width - 1 && line.size()==0)) {
+                        line.add(String.valueOf(curr));
                         curr = 0;
                     }
                 }
             }
+            /* For testing
             Collections.reverse(line);
-            if (!line.equals(y.get(h))) {
+            System.out.print("My Line " + h + ": ");
+            for (int l = 0; l < line.size(); l++) {
+                System.out.print(line.get(l) + " ");
+            }
+            System.out.println();
+            System.out.print("RL Line " + h + ": ");
+            for (int l = 0; l < y.get(h).size(); l++) {
+                System.out.print(y.get(h).get(l) + " ");
+            }
+            System.out.println();
+            System.out.println(compareArrays(line, y.get(h)));*/
+
+            if (!compareArrays(line, y.get(h))) {
                 return false;
             }
         }
+        // For each column
         for (int w = 0; w < width; w++) {
+            ArrayList<String> line = new ArrayList<String>();
+            int curr = 0;
+            // For each cell
+            for (int h = 0; h < height; h++ ){
+                // If the cell is filled
+                if (board.get(h).get(w)) {
+                    // Increment the count
+                    curr +=1;
+                    // If it's the last cell, log
+                    if (h == height - 1) {
+                        line.add(String.valueOf(curr));
+                    }
+                } else { // If the cell is not filled
+                    // And curr is set OR it's the last cell with an empty row
+                    if (curr > 0 || (h == height - 1 && line.size()==0)) {
+                        line.add(String.valueOf(curr));
+                        curr = 0;
+                    }
+                }
+            }
+            /* For testing
+            Collections.reverse(line);
+            System.out.print("My Line " + h + ": ");
+            for (int l = 0; l < line.size(); l++) {
+                System.out.print(line.get(l) + " ");
+            }
+            System.out.println();
+            System.out.print("RL Line " + h + ": ");
+            for (int l = 0; l < y.get(h).size(); l++) {
+                System.out.print(y.get(h).get(l) + " ");
+            }
+            System.out.println();
+            System.out.println(compareArrays(line, y.get(h)));*/
 
+            if (!compareArrays(line, x.get(w))) {
+                return false;
+            }
         }
         return true;
     }
 
+    public boolean compareArrays(ArrayList<String> array1, ArrayList<String> array2) {
+        if (array1 != null && array2 != null){
+            if (array1.size() != array2.size())
+                return false;
+            else
+                for (int i = 0; i < array2.size(); i++) {
+                    if (!array2.get(i).equals(array1.get(i))) {
+                        return false;
+                    }
+                }
+        }else{
+            return false;
+        }
+        return true;
+    }
+
+
+
     public static void main(String args[]){
         try {
             Nurikabe game = new Nurikabe(new File("../Puzzles/basic_test_1.txt"));
-            game.board.get(0).set(2, true);
-            game.board.get(1).set(2, true);
-            game.board.get(2).set(0, true);
-            game.board.get(2).set(1, true);
-            game.board.get(2).set(2, true);
-            game.board.get(2).set(3, true);
-            game.board.get(2).set(4, true);
-            game.board.get(3).set(2, true);
-            game.board.get(4).set(2, true);
             game.printBoard();
-            System.out.println(game.isSolved());
         } catch (Exception e) {
             e.printStackTrace();
         }
