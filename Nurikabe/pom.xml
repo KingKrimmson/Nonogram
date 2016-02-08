@@ -12,9 +12,9 @@
     roads and delays foot travel.
   </description>
 
-  <properties>
+  <!--<properties>
     <Nurikabe.path>C:/Users/Chris/IdeaProjects/Nurikabe/</Nurikabe.path>
-  </properties>
+  </properties>-->
 
 
   <!--<build>
@@ -64,9 +64,9 @@
                         </goals>
                         <configuration>
                             <mainClass>com.kingkrimmson.Nurikabe</mainClass>
-                            <arguments>
+                            <!--<arguments>
                                 <argument>${Nurikabe.path}</argument>
-                            </arguments>
+                            </arguments>-->
                         </configuration>
                     </execution>
                 </executions>
