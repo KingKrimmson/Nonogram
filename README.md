@@ -1,2 +1,4 @@
-# Nurikabe
-A Nurikabe program which can solve puzzles and give you hints to help in completion.
+# Nonogram
+Nonograms, also known as Hanjie, Picross or Griddlers, are picture logic puzzles in which
+cells in a grid must be colored or left blank according to numbers at the side of the grid
+to reveal a hidden picture.
