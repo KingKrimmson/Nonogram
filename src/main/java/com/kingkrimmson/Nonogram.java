@@ -210,11 +210,27 @@ public class Nonogram {
         }
     }
 
+    public ArrayList<Integer> getRowRule(int row) {
+        ArrayList<Integer> rowArray = new ArrayList<Integer>();
+        for (String cell : y.get(row)) {
+            //rowArray.add
+        }
+        return null;
+    }
+
     public boolean solve() {
         // Until solved
         while (!isSolved()) {
             // For each row
             for (int h = 0; h < height; h++) {
+                //ArrayList<ArrayList<Integer>> possibilities = new ArrayList<ArrayList<Integer>>();
+                //ArrayList<Integer> rule = y.get(h);
+                // Generate all possibilities that fit this row's rule
+                // Reduce set to possibilities that fit row's current state
+                // Implement any cells which are constant among all sets.
+
+
+
                 // If the row still has cells to fill
                 if (rowHasEmpty(h)) {
                     // If the hint has only 1 number
@@ -253,7 +269,7 @@ public class Nonogram {
 
     public static void main(String args[]){
         try {
-            Nonogram game = new Nonogram(new File("Puzzles/basic_test_1.txt"));
+            Nonogram game = new Nonogram(new File("Puzzles/basic_test_3.txt"));
             game.printBoard();
             System.out.println("Solvable? " + game.solve());
             game.printBoard();
