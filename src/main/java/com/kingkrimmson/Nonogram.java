@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -133,6 +134,7 @@ public class Nonogram {
                     }
                 }
             }
+            Collections.reverse(line);
             if (!compareArrays(line, y.get(h))) {
                 return false;
             }
@@ -159,6 +161,7 @@ public class Nonogram {
                     }
                 }
             }
+            Collections.reverse(line);
             if (!compareArrays(line, x.get(w))) {
                 return false;
             }
@@ -218,14 +221,25 @@ public class Nonogram {
         return null;
     }
 
+    public ArrayList<ArrayList<Integer>> getPossibilities(ArrayList<Integer> rule, int length) {
+        ArrayList<ArrayList<Integer>> possibilities = new ArrayList<ArrayList<Integer>>();
+
+        return null;
+    }
+
     public boolean solve() {
         // Until solved
         while (!isSolved()) {
             // For each row
             for (int h = 0; h < height; h++) {
-                //ArrayList<ArrayList<Integer>> possibilities = new ArrayList<ArrayList<Integer>>();
-                //ArrayList<Integer> rule = y.get(h);
+
+                ArrayList<Integer> rule = new ArrayList<Integer>();
+                ArrayList<String> tempRule = y.get(h);
+                for (String cell : tempRule) {
+                    rule.add(Integer.parseInt(cell));
+                }
                 // Generate all possibilities that fit this row's rule
+
                 // Reduce set to possibilities that fit row's current state
                 // Implement any cells which are constant among all sets.
 
